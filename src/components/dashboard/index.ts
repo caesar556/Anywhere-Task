@@ -1,6 +1,6 @@
 import Sidebar from "./layout/SideBar";
 import NavBar from "./layout/NavBar";
 import Banner from "./common/Banner";
-import Announcement from "./common/Announcement";
+import GridContent from "./layout/GridContent";
 
-export { Sidebar, NavBar, Banner, Announcement };
+export { Sidebar, NavBar, Banner, GridContent };

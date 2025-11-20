@@ -50,13 +50,13 @@ export default function NavBar() {
 
         <IconButton color="default">
           <Badge badgeContent={1} color="error">
-            <MarkunreadIcon sx={{ color: "#43B5C4" }} />
+            <MarkunreadIcon sx={{ color: "#0047AB" }} />
           </Badge>
         </IconButton>
 
         <IconButton color="default">
           <Badge badgeContent={1} color="error">
-            <NotificationsIcon sx={{ color: "#43B5C4" }} />
+            <NotificationsIcon sx={{ color: "#0047AB" }} />
           </Badge>
         </IconButton>
 

@@ -1,25 +1,27 @@
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 import { CalendarToday, Assignment } from "@mui/icons-material";
 
-export default function CustomCard() {
+type CustomCardProps = {
+  title: string;
+  course: string;
+  date: string;
+};
+
+export default function CustomCard({ title, course, date }: CustomCardProps) {
+  const formattedDate = date ? date.split("T")[0] : "No date";
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden max-w-md mx-auto my-4">
-      <Card className="border-l-4 border-blue-500 rounded-none">
+      <Card className="border-l-4 border-blue-500 p-4  mt-3 rounded-none">
         <CardContent className="p-4">
           <div className="flex items-center mb-2">
             <Assignment className="text-blue-500 mr-2" fontSize="small" />
             <Typography variant="h6" className="font-semibold text-gray-800">
-              Unit 2 quiz
+              {title}
             </Typography>
           </div>
 
           <Typography variant="body2" className="text-gray-600 mb-1">
-            Course: Physics Q3
+            Course: {course}
           </Typography>
 
           <Typography variant="body2" className="text-gray-600 mb-3">
@@ -28,7 +30,7 @@ export default function CustomCard() {
 
           <div className="flex items-center text-gray-500 mb-4">
             <CalendarToday fontSize="small" className="mr-1" />
-            <Typography variant="body2">Due: 20 Dec 2017 - 09:00 PM</Typography>
+            <Typography variant="body2">Due: {formattedDate}</Typography>
           </div>
 
           <Button

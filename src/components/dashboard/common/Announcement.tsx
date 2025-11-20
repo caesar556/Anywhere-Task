@@ -1,64 +1,40 @@
 import { Card, CardContent } from "@mui/material";
 import AnnouncementCard from "./AnnouncementCard";
-
-export const announcements = [
-  {
-    id: 1,
-    imgSrc: "https://i.pravatar.cc/150?img=1",
-    name: "Dr. Sarah Morgan",
-    date: "2023-05-08",
-    description: "Midterm exam results have been uploaded. Please review them.",
-  },
-  {
-    id: 2,
-    imgSrc: "https://i.pravatar.cc/150?img=5",
-    name: "Prof. Adam Lewis",
-    date: "2023-04-29",
-    description:
-      "Tomorrow’s lecture will cover Unit 4: Advanced Calculus topics.",
-  },
-  {
-    id: 3,
-    imgSrc: "https://i.pravatar.cc/150?img=8",
-    name: "Admin Office",
-    date: "2023-04-22",
-    description:
-      "Campus will be closed next Friday due to scheduled maintenance.",
-  },
-  {
-    id: 4,
-    imgSrc: "https://i.pravatar.cc/150?img=12",
-    name: "Dr. Lina Ahmed",
-    date: "2023-04-18",
-    description: "Please submit Assignment 3 before the deadline on Monday.",
-  },
-  {
-    id: 5,
-    imgSrc: "https://i.pravatar.cc/150?img=16",
-    name: "System Notification",
-    date: "2023-04-10",
-    description: "Your profile has been updated successfully.",
-  },
-];
+import { useGetAllAnnouncementsQuery } from "../../../redux/announcement/announcementApi";
+import type { Key } from "react";
+import { AsyncHandler } from "../../handler/AsyncHandler";
 
 export default function Announcement() {
+  const { data, isError, isLoading } = useGetAllAnnouncementsQuery(undefined);
+  const announcements = data?.data || [];
+
   return (
     <Card>
-      <CardContent>
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
-          Announcement
-        </h2>
-        <p className="text-gray-400">All announcements here in one place</p>
-        {announcements.map((announcement) => (
-          <AnnouncementCard
-            key={announcement.id}
-            imgSrc={announcement.imgSrc}
-            name={announcement.name}
-            date={announcement.date}
-            description={announcement.description}
-          />
-        ))}
-      </CardContent>
+      <AsyncHandler isError={isError} isLoading={isLoading}>
+        <CardContent>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            Announcement
+          </h2>
+          <p className="text-gray-400 text-[14px]">
+            All announcements here in one place
+          </p>
+          {announcements.map(
+            (announcement: {
+              _id: Key | null | undefined;
+              title: string;
+              date: string;
+              description: string;
+            }) => (
+              <AnnouncementCard
+                key={announcement._id}
+                name={announcement.title}
+                date={announcement.date}
+                description={announcement.description}
+              />
+            ),
+          )}
+        </CardContent>
+      </AsyncHandler>
     </Card>
   );
 }
