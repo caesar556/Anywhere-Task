@@ -28,9 +28,9 @@ export default function Welcome() {
     navigate("/dashboard");
   };
 
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const buttonsRef = useRef(null);
+  const titleRef = useRef<HTMLHeadingElement>(null!);
+  const subtitleRef = useRef<HTMLHeadingElement>(null!);
+  const buttonsRef = useRef<HTMLButtonElement>(null!);
 
   useHeroGsap({
     titleRef,

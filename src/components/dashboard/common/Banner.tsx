@@ -3,11 +3,11 @@ import { Box, Typography, Button, Card } from "@mui/material";
 import { useBannerGsap } from "../../animations/dashboard/banner.gsap";
 
 export default function Banner() {
-  const bannerRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const descRef = useRef<HTMLParagraphElement | null>(null);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
+  const bannerRef = useRef<HTMLDivElement>(null!);
+  const titleRef = useRef<HTMLHeadingElement>(null!);
+  const descRef = useRef<HTMLParagraphElement>(null!);
+  const buttonRef = useRef<HTMLButtonElement>(null!);
+  const imageRef = useRef<HTMLImageElement>(null!);
 
   useBannerGsap({ bannerRef, titleRef, descRef, buttonRef, imageRef });
 
